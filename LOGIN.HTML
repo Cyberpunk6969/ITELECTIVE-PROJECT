@@ -15,7 +15,7 @@
       align-items: center;
       height: 100vh;
     }
- 
+
     .login-container {
       background-color: rgba(255, 255, 255, 0.9);
       padding: 2rem;
@@ -73,15 +73,18 @@
       const user = document.getElementById('username').value;
       const pass = document.getElementById('password').value;
       const message = document.getElementById('message');
-
-      if (user === 'Edzo' && pass === '1234') {
-        alert('Login successful!');
-        window.location.href = 'index.html'; // Redirect to homepage
-      } else if (user !== 'Edzo') {
-        message.textContent = 'Incorrect Username';
-      } else {
-        message.textContent = 'Incorrect Password';
-      }
+if (user === 'edzo') {
+  if (pass === '12345') {
+    alert('Login successful!');
+    window.location.href = 'index.html'; // Redirect to homepage
+  } else {
+    message.textContent = 'Incorrect password';
+  }
+} else if (user === 'Admin') {
+  message.textContent = 'Incorrect username'; // Specific message for Admin
+} else {
+  message.textContent = 'Incorrect username'; // General incorrect username message
+}
     }
   </script>
 </body>
