@@ -1,0 +1,157 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>About Us - MyHotelFinder</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+      }
+
+      .overlay {
+        background-color: rgba(0, 0, 0, 0.65);
+        min-height: 100vh;
+      }
+
+      header {
+        background-color: rgba(46, 26, 133, 0.9);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      }
+
+      header div {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      nav a {
+        color: white;
+        margin-left: 1.2rem;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        color: #fbd14b;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 3rem 2rem;
+      }
+
+      .about-box {
+        background-color: rgba(255, 255, 255, 0.08);
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease;
+      }
+
+      .about-box:hover {
+        transform: scale(1.01);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #fbd14b;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      h2 {
+        color: #fbd14b;
+        margin-top: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .about-box p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
+      .highlight {
+        color: #fbd14b;
+        font-weight: bold;
+      }
+
+      ul {
+        padding-left: 1.2rem;
+      }
+
+      ul li {
+        margin-bottom: 0.6rem;
+      }
+
+      @media (max-width: 600px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav {
+          margin-top: 0.5rem;
+        }
+
+        .container {
+          padding: 2rem 1rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .about-box {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay">
+      <header>
+        <div>MyHotelFinder</div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <div class="container">
+        <div class="about-box">
+          <h1>About Us</h1>
+
+          <p><span class="highlight">MyHotelFinder</span> is a hotel discovery platform proudly built by students as part of a real-world college project.</p>
+
+          <p>Whether you're seeking luxury in Makati or budget-friendly options in Cebu, we help you explore and compare stays across the Philippines — all with just a few clicks.</p>
+
+          <h2> Our Mission</h2>
+          <p>To empower travelers with smart, fast, and reliable tools to find the perfect hotel. We aim to make travel planning easier for students, families, and professionals alike.</p>
+
+          <h2>\ Built by Students</h2>
+          <p>This project showcases how <span class="highlight">design, development, and passion</span> come together in a learning environment. Every feature you see — from hotel search to responsive design — was coded by us from scratch as part of a semester-long journey.</p>
+
+          <h2> What Makes Us Exciting</h2>
+          <ul>
+            <li>Clean, student-friendly design</li>
+            <li>Fully responsive layout (try resizing!)</li>
+            <li>Inspired by real hotel booking platforms</li>
+            <li>100% built for learning and creativity</li>
+          </ul>
+
+          <p>Thank you for visiting <span class="highlight">MyHotelFinder</span>. We hope you enjoy exploring as much as we enjoyed building it!</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>

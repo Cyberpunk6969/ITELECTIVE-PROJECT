@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MyHotelFinder - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+    }
+
+    header {
+      background-color: #2e1a85;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    .hero h1 {
+      position: relative;
+      font-size: 3rem;
+      z-index: 1;
+    }
+
+    .hero p {
+      position: relative;
+      font-size: 1.2rem;
+      z-index: 1;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .search-fields {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: -3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .search-fields input,
+    .search-fields select {
+      flex: 1;
+      min-width: 150px;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #2e1a85;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1c0f5e;
+    }
+
+    h2 {
+      margin-top: 3rem;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .hotel-card {
+      background: #fff;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      transition: transform 0.2s;
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .hotel-card img {
+      width: 180px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .hotel-info {
+      flex-grow: 1;
+    }
+
+    .hotel-info h3 {
+      margin: 0.2rem 0;
+      color: #2e1a85;
+    }
+
+    .hotel-info p {
+      margin: 0.2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .hotel-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hotel-card img {
+        width: 100%;
+        height: auto;
+      }
+
+      .search-fields {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>MyHotelFinder</strong></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Find Your Perfect Stay</h1>
+    <p>Discover and reserve top-rated hotels with just a few clicks.</p>
+  </div>
+
+  <div class="container">
+    <div class="search-fields">
+      <input type="text" id="searchInput" placeholder="Hotel name or city" />
+      <input type="date" id="checkInDate" />
+      <input type="date" id="checkOutDate" />
+      <select id="numPeople">
+        <option value="" disabled selected>Number of people</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4+">4+</option>
+      </select>
+      <button onclick="searchHotel()">Search</button>
+    </div>
+
+    <h2>Available Hotels</h2>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const hotels = [
+      {
+        name: "Okada",
+        city: "Manila",
+        price: "₱13,000/night",
+        image: "https://tse2.mm.bing.net/th?id=OIP.r7UTLjEeeKI1WhEwKYOymgHaE8&pid=Api&P=0&h=180"
+      },
+      {
+        name: "Manila Hotel",
+        city: "Peninsula Manila",
+        price: "₱25,000/night",
+        image: "https://tse3.mm.bing.net/th?id=OIP.lBRBYw5XmTizo6CN08bYDwHaFz&pid=Api&P=0&h=180"
+      },
+      {
+        name: "Shangri-La The Fort",
+        city: "Boracay",
+        price: "₱21,000/night",
+        image: "https://tse2.mm.bing.net/th?id=OIP.nwV13D3n-k8z7QQRkgNdxQHaFj&pid=Api&P=0&h=180"
+      },
+      {
+        name: "Conrad",
+        city: "Manila",
+        price: "₱12,000/night",
+        image: "https://i.ytimg.com/vi/XiR2674gDfs/maxresdefault.jpg"
+      },
+      {
+        name: "Seda Vertis North",
+        city: "Astra corner Lux Drives Vertis North, Diliman",
+        price: "₱10,000/night",
+        image: "https://th.bing.com/th/id/OIP.3IaYTFLxj5sH0V8ta2K0hgHaEk?w=262&h=180&c=7&r=0&o=5&pid=1.7"
+      },
+       {
+        name: "Hilton",
+        city: "Manila   ",
+        price: "₱9,000/night",
+        image: "https://th.bing.com/th/id/OIP.al3vecDCRgOPkdqaWYeVSQHaD4?w=340&h=180&c=7&r=0&o=5&pid=1.7"
+      },
+     
+    ];
+
+    function searchHotel() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const checkIn = document.getElementById('checkInDate').value;
+      const checkOut = document.getElementById('checkOutDate').value;
+      const people = document.getElementById('numPeople').value;
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = "";
+
+      const matched = hotels.filter(hotel =>
+        hotel.name.toLowerCase().includes(query) || hotel.city.toLowerCase().includes(query)
+      );
+
+      if (matched.length === 0) {
+        resultsDiv.innerHTML = "<p>No hotels found.</p>";
+      } else {
+        matched.forEach(hotel => {
+          resultsDiv.innerHTML += `
+            <div class="hotel-card">
+              <img src="${hotel.image}" alt="${hotel.name}" />
+              <div class="hotel-info">
+                <h3>${hotel.name}</h3>
+                <p>${hotel.city}</p>
+                <p>${hotel.price}</p>
+                <button onclick="reserveHotel('${hotel.name}', '${checkIn}', '${checkOut}', '${people}')">Reserve</button>
+              </div>
+            </div>`;
+        });
+      }
+    }
+
+    function reserveHotel(name, checkIn, checkOut, people) {
+      if (!checkIn || !checkOut || !people) {
+        alert("Please fill out check-in, check-out, and number of people.");
+        return;
+      }
+      alert(`Reservation complete for ${name}\nCheck-in: ${checkIn}\nCheck-out: ${checkOut}\nGuests:        {people}`);
+    }
+  </script>
+</body>
+</html>
